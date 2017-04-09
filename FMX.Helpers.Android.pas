@@ -133,7 +133,11 @@ end;
 
 function GetThemeFromDescriptor(ADescriptor: TStyleDescription): Integer; overload;
 begin
-  Result := 0;
+ if TJAndroidThemeHelper.ThemeID = -1 then
+   Result := TJAlertDialog.JavaClass.THEME_DEVICE_DEFAULT_LIGHT
+ else
+   Result := TJAndroidThemeHelper.ThemeID;
+        
   if ADescriptor <> nil then
   begin
     // ZuBy ***
